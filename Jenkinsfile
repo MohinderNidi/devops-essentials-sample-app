@@ -1,9 +1,20 @@
 pipeline {
   agent any
+
   stages {
-    stage('build') {
+    stage("One") {
       steps {
-        echo 'done'
+        echo "Hello"
+      }
+    }
+    stage("Evaluate Master") {
+      when {
+        // skip this stage unless on Master branch
+        branch "master"
+      }
+      steps {
+        echo "World"
+        echo "Heal it"
       }
     }
   }
